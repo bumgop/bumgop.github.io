@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' https://fonts.googleapis.com https://cdn.boxicons.com 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com https://cdn.boxicons.com; connect-src 'self' https://api.emailjs.com;">
+		<title>Carlos Gamez - Software Engineer</title>
+		<link rel="stylesheet" href="assets/css/styles.css" />
+		<link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+		<link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+		<link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+	</head>
+	<body>
+		<header class="l-header">
+			<nav class="nav bd-grid">
+				<div>
+					<a href="#" class="nav__logo">CG</a>
+				</div>
+				<div class="nav__menu" id="nav-menu">
+					<ul class="nav__list">
+						<li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+						<li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+						<li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+						<li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
+						<li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+					</ul>
+				</div>
+
+				<div class="nav__toggle" id="nav-toggle">
+					<i class="bx bx-menu"></i>
+				</div>
+			</nav>
+		</header>
+
+		<main class="l-main">
+			<!--HOME-->
+			<section class="home bd-grid" id="home">
+				<div class="home__data">
+					<h1 class="home__title"><span class="home__title-color">Carlos Gamez</span><br> Software Engineer</h1>
+
+					<a href="#contact" class="button">Contact</a>
+				</div>
+				<div class="home__social">
+				<a href="https://www.linkedin.com/in/carlos-ab-gamez" class="home__social-icon" rel="noopener noreferrer" target="_blank"><i class="bxl bx-linkedin"></i></a>
+				<a href="https://www.github.com/bumgop" class="home__social-icon" rel="noopener noreferrer" target="_blank"><i class="bxl bx-github"></i></a>
+				</div>
+				<div class="home__img">
+					<img src="assets/img/profpic_trans.webp" alt="Profile Picture">
+				</div>
+			</section>
+			
+			<!--ABOUT-->
+			<section class="about section" style="background-color: var(--bg-color-secondary);" id="about">
+				<h2 class="section-title">About</h2>
+				<div class="about__container bd-grid">
+					<!-- <div class="about__img">
+						<img src="assets/img/me.jpg" alt="Temporary Image">
+					</div> -->
+					<h2 class="about__subtitle"><span style="color:var(--primary-color); font-size:6rem; line-height:5rem;">WHO</span><br><span style="font-size: 4rem;">AM <br>I?</span></h2>
+					<p class="about__text">I am a life-long learner with a B.S. in Software Engineering and a background in building things end-to-end, including
+						containerized web apps and cloud pipelines as well as ML-adjacent systems. I gravitate toward backend and infrastructure work, 
+						but I am comfortable across the stack. I am looking for a role where I can contribute real engineering work, keep learning, and grow with a team.
+					</p>
+					<hr style="grid-column: span 2; border: 1px solid var(--secondary-text); width: 100%; margin: 28px auto; height: 1px;">
+					<div class="about__quals" style="grid-column: span 2; grid-template-columns: 128px 1fr; margin-bottom: var(--mb-2);">
+						<img src="assets/img/wgulogo.png" style="width: 128px;" alt="Western Governors University Logo">
+						<div style="width: min-content; height: min-content; align-self: center;">
+							<h2 class="degree__title">B.S. in Software Engineering</h2>
+							<p class="degree__subtitle">Western Governors University | <span>October 2025</span></p>
+						</div>
+					</div>
+					<div class="about__quals" style="grid-column: span 2; grid-template-columns: 1fr 1fr 1fr; column-gap: 40px">
+						<div class="about__quals">
+							<img src="assets/img/projectplusbadge.png" alt="CompTIA Project+ Badge">
+							<div style="width: max-content; height: min-content; align-self: center;">
+								<h2 class="cert__title">CompTIA Project+</h2>
+								<p class="cert__subtitle">December 2024</p>
+							</div>
+						</div>
+						<div class="about__quals">
+							<img src="assets/img/itil4_badge.png" alt="ITIL 4 Foundation Badge">
+							<div style="width: max-content; height: min-content; align-self: center;">
+								<h2 class="cert__title">ITIL 4 Foundation</h2>
+								<p class="cert__subtitle">March 2024</p>
+							</div>
+						</div>
+						<div class="about__quals">
+							<img src="assets/img/awsbadge.png" alt="AWS Certified Cloud Practitioner Badge">
+							<div style="width: max-content; height: min-content; align-self: center;">
+								<h2 class="cert__title">AWS Certified Cloud Practicioner</h2>
+								<p class="cert__subtitle">September 2023</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!--SKILLS-->
+			<section class="skills section" id="skills">
+				<h2 class="section-title">Skills</h2>
+				<div class="skills__container bd-grid">
+					<div class="skills__div">
+						<h2 class="skills__subtitle">Languages</h2>
+						<ul class="skills__text">
+							<li>C#</li>
+							<li>Python</li>
+							<li>Java</li>
+							<li>C++</li>
+							<li>C</li>
+							<li>HTML5</li>
+							<li>CSS</li>
+							<li>JavaScript</li>
+							<li>SQL</li>
+						</ul>
+					</div>
+					<div class="skills__div">
+						<h2 class="skills__subtitle">Frameworks and Tools</h2>
+						<ul class="skills__text">
+							<li>ASP.NET Core</li>
+							<li>Entity Framework Core</li>
+							<li>Razor Pages</li>
+							<li>GitHub Actions</li>
+						</ul>
+					</div>
+					<div class="skills__div">
+						<h2 class="skills__subtitle">Data</h2>
+						<ul class="skills__text">
+							<li>Azure SQL</li>
+							<li>SQLite</li>
+							<li>Database Design</li>
+							<li>Feature Engineering</li>
+						</ul>
+					</div>
+					<div class="skills__div">
+						<h2 class="skills__subtitle">Cloud and Infrastructure</h2>
+						<ul class="skills__text">
+							<li>AWS (ECS, ECR, CloudWatch)</li>
+							<li>Terraform</li>
+							<li>Docker</li>
+							<li>Azure DevOps</li>
+						</ul>
+					</div>
+					<div class="skills__div">
+						<h2 class="skills__subtitle">Systems and Practices</h2>
+						<ul class="skills__text">
+							<li>CI/CD</li>
+							<li>Infrastructure-as-Code</li>
+							<li>REST APIs</li>
+							<li>Modular System Design</li>
+						</ul>
+					</div>
+					<div class="skills__div">
+						<h2 class="skills__subtitle">Dev Tools</h2>
+						<ul class="skills__text">
+							<li>Git</li>
+							<li>Linux</li>
+							<li>Technical Documentation</li>
+							<li>Process Automation</li>
+						</ul>
+					</div>
+				</div>
+				<div class="skills__data">
+					<div class="skills__group">
+						<div class="skills__names">
+							<i class="bxl bx-c-sharp skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-python skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-java skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-c-plus-plus skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-c skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-html5 skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-css3 skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-javascript skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-my-sql skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-postgresql skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-mongodb skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-nodejs skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-php skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-typescript skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-vuejs skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-kotlin skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-visual-studio skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-gitlab skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-github skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-figma skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-unity skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-bootstrap skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-ubuntu skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-docker skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-git skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-terraform skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-kubernetes skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-aws skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-npm skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-dot-env skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-claude-ai skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-gemini skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-github-copilot skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-cloudflare skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-bash skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-raspberry-pi skills__icon"></i>
+						</div>
+					</div>
+					<div aria-hidden="true" class="skills__group">
+						<div class="skills__names">
+							<i class="bxl bx-c-sharp skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-python skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-java skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-c-plus-plus skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-c skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-html5 skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-css3 skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-javascript skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-my-sql skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-postgresql skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-mongodb skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-nodejs skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-php skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-typescript skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-vuejs skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-kotlin skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-visual-studio skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-gitlab skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-github skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-figma skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-unity skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-bootstrap skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-ubuntu skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-docker skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-git skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-terraform skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-kubernetes skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-aws skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-npm skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-dot-env skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-claude-ai skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-gemini skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-github-copilot skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-cloudflare skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-bash skills__icon"></i>
+						</div>
+						<div class="skills__names">
+							<i class="bxl bx-raspberry-pi skills__icon"></i>
+						</div>
+					</div>
+				</div>	
+			</section>
+			
+			<!--PROJECTS-->
+			<section class="projects section" id="projects">
+				<h2 class="section-title">Projects</h2>
+
+				<div class="projects__container bd-grid">
+					<a href="https://github.com/bumgop/tws" target="_blank" rel="noopener noreferrer" class="project__card" data-project="1">
+						<div class="project__img">
+							<img src="assets/img/proj1_0.png" alt="Project 1 Screenshots">
+						</div>
+						<div class="project__type">Capstone</div>
+						<div class="project__heading">Full-Stack Web App with Integrated CMS</div>
+					</a>
+					<a href="https://github.com/bumgop/ai-fighttrainer" target="_blank" rel="noopener noreferrer" class="project__card" data-project="2">
+						<div class="project__img">
+							<img src="assets/img/proj2_0.png" alt="Project 2 Screenshots">
+						</div>
+						<div class="project__type">ML-Enabled Systems</div>
+						<div class="project__heading">Adaptive Fighting Game Trainer</div>
+					</a>
+					<!--<a href="" class="project__card">
+						<div class="project__img">
+							<img src="" alt="Project 3 Screenshots">
+						</div>
+						<div class="project__type">Infrastructure</div>
+						<div class="project__heading">AWS Cloud Deployment Pipeline</div>
+					</a>-->
+				</div>
+			</section>
+
+			<!--CONTACT-->
+			<section class="contact section" id="contact">
+				<h2 class="section-title">Contact</h2>
+				<div class="contact__container bd-grid">
+					<form action="" class="contact__form" id="contact__form">
+						<h2 class="contact__subtitle">Reach out</h2>
+						<div class="contact__field">
+							<input required="" placeholder="Name" class="contact__input" type="text" id="contact__name"/>
+						</div>
+						<div class="contact__field">
+							<input required="" placeholder="Email" class="contact__input" type="email" id="contact__email"/>
+						</div>
+						<div class="contact__field">
+							<input required="" placeholder="Subject" class="contact__input" type="text" id="contact__subject"/>
+						</div>
+						<div class="contact__field">
+							<textarea required="" placeholder="Message" class="contact__input" style="resize: vertical;" rows="10" id="contact__message"></textarea>
+						</div>
+					<button type="button" class="button contact__submit" id="contact__submit">Send Message</button>
+					</form>
+				</div>
+			</section>
+		</main>
+
+		<!--FOOTER-->
+		<footer class="footer" style="background-color: var(--bg-color-secondary);">
+			<p class="footer__title">CG</p>
+			<div class="footer__social">
+				<a href="https://www.linkedin.com/in/carlos-ab-gamez" class="footer__icon" rel="noopener noreferrer" target="_blank"><i class="bxl bx-linkedin"></i></a>
+				<a href="https://www.github.com/bumgop" class="footer__icon" rel="noopener noreferrer" target="_blank"><i class="bxl bx-github"></i></a>
+			</div>
+			<p class="footer__copy">© 2026 Carlos Gamez. All rights reserved.</p>
+		</footer>
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+		<script src="https://unpkg.com/scrollreveal"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+# HTML pages that are generated or not needed
+about.html
+projects.html
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+*.swo
+*~
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Node modules (if using npm)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build/dist directories (if added later)
+dist/
+build/
+
+# macOS
+.AppleDouble
+.LSOverride
+
+# Windows
+*.lnk
+
+# Temporary files
+*.tmp
+tmp/
+temp/
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+.vs/Portfolio/CopilotIndices/17.14.698.11175/CodeChunks.db
+.vs/Portfolio/CopilotIndices/17.14.698.11175/SemanticSymbols.db
+.vs/Portfolio/FileContentIndex/045a83f7-0dd4-4e1d-a73c-01b46d3fed99.vsidx
+.vs/Portfolio/FileContentIndex/656c8895-876b-4623-8575-fb8150bf632e.vsidx
+.vs/Portfolio/FileContentIndex/892743da-ee48-48a8-821a-402bd771ebe5.vsidx
+.vs/Portfolio/FileContentIndex/e5be0652-c190-41a7-9b03-bea9f9138a38.vsidx
+.vs/Portfolio/FileContentIndex/eb655a8c-ec5d-4e0d-a07a-d203e488dc28.vsidx
+.vs/Portfolio/v17/.wsuo
+.vs/Portfolio/v17/DocumentLayout.backup.json
+.vs/Portfolio/v17/DocumentLayout.json

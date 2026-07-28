@@ -1,247 +1,191 @@
-// menu show
-const showMenu = (toggleId, navId) => 
-{
-    const toggle = document.getElementById(toggleId),
-    nav = document.getElementById(navId)
+const initTheme = () => {
+  const toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+ 
+  toggle.addEventListener('click', () => {
+    const root = document.documentElement;
+    const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+};
+ 
 
-    if(toggle && nav)
-    {
-        toggle.addEventListener('click', () => 
-        {
-            nav.classList.toggle('show')
-        })
-    }
-}
-showMenu('nav-toggle', 'nav-menu')
+const initNav = () => {
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+ 
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => menu.classList.toggle('show'));
+  }
+ 
+  document.querySelectorAll('.nav__link').forEach((link) => {
+    link.addEventListener('click', () => menu && menu.classList.remove('show'));
+  });
+};
+ 
 
-// remove menu mobile
-const navLink = document.querySelectorAll('.nav__link')
-
-function linkAction()
-{
-    const navMenu = document.getElementById('nav-menu')
-    navMenu.classList.remove('show')
-}
-navLink.forEach(n => n.addEventListener('click', linkAction))
-
-// scroll sections active link
-const sections = document.querySelectorAll('section[id]')
-
-const scrollActive = () =>
-{
-    const scrollY = window.scrollY
-    sections.forEach(current =>
-    {
-        const sectionHeight = current.offsetHeight,
-            sectionTop = current.offsetTop - 58,
-            sectionId = current.getAttribute('id'),
-            sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
-        
-        if(sectionsClass) {
-            if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight)
-            {
-                sectionsClass.classList.add('active-link')
-            }
-            else
-            {
-                sectionsClass.classList.remove('active-link')
-            }
-        }
-    })
-}
-window.addEventListener('scroll', scrollActive)
-
-// scroll reveal animation
-const srTop = ScrollReveal
-(
-    {
-        origin: 'top',
-        distance: '60px',
-        duration: 2000,
-        delay: 200,
-    }
-);
-
-
-srTop.reveal('.skill__card', {});
-srTop.reveal('.about__subtitle, .about__text', {delay: 400});
-srTop.reveal('.skills__data, .projects__img, .contact__container', {interval: 200});
-
-const srRight = ScrollReveal
-(
-    {
-        origin: 'right',
-        distance: '100px',
-        duration: 2000,
-        delay: 200,
-    }
-);
-
-srRight.reveal('.home__img', {delay: 400});
-
-const srLeft = ScrollReveal
-(
-    {
-        origin: 'left',
-        distance: '100px',
-        duration: 2000,
-        delay: 200,
-    }
-);
-
-srLeft.reveal('.home__data', {});
-srLeft.reveal('.home__social-icon', {interval: 200});
-
-// carousel feature
-const initCarousel = () => {
-    const projectCards = document.querySelectorAll('.project__card');
-    const carouselIntervals = new Map();
-    const currentImageIndex = new Map();
-
-    const startCarousel = (projectCard) => {
-        const projectNum = projectCard.getAttribute('data-project');
-        const img = projectCard.querySelector('.project__img img');
-        
-        if (!currentImageIndex.has(projectNum)) {
-            currentImageIndex.set(projectNum, 0);
-        }
-
-        if (!carouselIntervals.has(projectNum)) {
-            const interval = setInterval(() => {
-                let currentIndex = currentImageIndex.get(projectNum);
-                currentIndex = (currentIndex + 1) % 3; // Cycle through 3 images
-                currentImageIndex.set(projectNum, currentIndex);
-                
-                img.src = `assets/img/proj${projectNum}_${currentIndex}.png`;
-            }, 3000); // Change image every 3 seconds
-
-            carouselIntervals.set(projectNum, interval);
-        }
-    };
-
-    const stopCarousel = (projectNum) => {
-        if (carouselIntervals.has(projectNum)) {
-            clearInterval(carouselIntervals.get(projectNum));
-            carouselIntervals.delete(projectNum);
-        }
-    };
-
-    projectCards.forEach(projectCard => {
-        const projectNum = projectCard.getAttribute('data-project');
-        
-        projectCard.addEventListener('mouseenter', () => {
-            stopCarousel(projectNum);
-        });
-
-        projectCard.addEventListener('mouseleave', () => {
-            startCarousel(projectCard);
-        });
-
-        // Auto-start carousel on page load
-        startCarousel(projectCard);
+const initScrollSpy = () => {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav__link');
+ 
+  const onScroll = () => {
+    const scrollY = window.scrollY;
+ 
+    sections.forEach((section) => {
+      const sectionHeight = section.offsetHeight;
+      const sectionTop = section.offsetTop - 120;
+      const sectionId = section.getAttribute('id');
+      const link = document.querySelector(`.nav__link[href="#${sectionId}"]`);
+ 
+      if (!link) return;
+ 
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        navLinks.forEach((l) => l.classList.remove('active-link'));
+        link.classList.add('active-link');
+      }
     });
+  };
+ 
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+};
+ 
+
+const initScrollReveal = () => {
+  const items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) || items.length === 0) {
+    items.forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
+ 
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('is-visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+  );
+ 
+  items.forEach((el) => observer.observe(el));
+};
+ 
+
+const initProjectCarousels = () => {
+  document.querySelectorAll('.project-card__media').forEach((media) => {
+    const images = media.querySelectorAll('img');
+    if (images.length < 2) return;
+ 
+    let index = 0;
+    let intervalId = null;
+ 
+    const advance = () => {
+      images[index].classList.remove('is-active');
+      index = (index + 1) % images.length;
+      images[index].classList.add('is-active');
+    };
+ 
+    const start = () => {
+      if (intervalId) return;
+      intervalId = setInterval(advance, 3000);
+    };
+ 
+    const stop = () => {
+      clearInterval(intervalId);
+      intervalId = null;
+    };
+ 
+    const card = media.closest('.project-card');
+    card.addEventListener('mouseenter', stop);
+    card.addEventListener('mouseleave', start);
+ 
+    start();
+  });
 };
 
-// Initialize carousel when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCarousel);
-} else {
-    initCarousel();
-}
+ 
 
-// contact form functionality
 const initContactForm = () => {
-    // Initialize EmailJS with public key
+  if (window.emailjs) {
+    console.info("connected to emailjs");
     emailjs.init('jeu_jyxSwXLRfibfF');
-
-    const contactForm = document.getElementById('contact__form');
-    const submitButton = document.getElementById('contact__submit');
-
-    // Input validation function
-    const validateInput = (value, minLength = 1, maxLength = 1000) => {
-        return typeof value === 'string' && 
-               value.trim().length >= minLength && 
-               value.trim().length <= maxLength;
-    };
-
-    const validateEmail = (email) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
-
-    if (submitButton) {
-        submitButton.addEventListener('click', async (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById('contact__name').value.trim();
-            const email = document.getElementById('contact__email').value.trim();
-            const subject = document.getElementById('contact__subject').value.trim();
-            const message = document.getElementById('contact__message').value.trim();
-
-            // Validate inputs
-            if (!validateInput(name, 1, 100)) {
-                showNotification('Please enter a valid name', 'error');
-                return;
-            }
-
-            if (!validateEmail(email)) {
-                showNotification('Please enter a valid email address', 'error');
-                return;
-            }
-
-            if (!validateInput(subject, 1, 200)) {
-                showNotification('Please enter a valid subject', 'error');
-                return;
-            }
-
-            if (!validateInput(message, 10, 5000)) {
-                showNotification('Message must be between 10 and 5000 characters', 'error');
-                return;
-            }
-
-            // Prepare template parameters
-            const templateParams = {
-                name: name,
-                email: email,
-                title: subject,
-                message: message
-            };
-
-            try {
-                // Send email using EmailJS
-                const response = await emailjs.send(
-                    'service_o4o68ha',
-                    'contact_form',
-                    templateParams
-                );
-
-                showNotification(`Thank you, ${name}! Your message has been sent successfully.`, 'success');
-                contactForm.reset();
-
-                console.log('Email sent successfully:', response);
-            } catch (error) {
-                showNotification('Failed to send message. Please try again.', 'error');
-                console.error('Failed to send email:', error);
-            }
-        });
+  }
+  else
+  {
+    console.warn("emailjs not loaded");
+  }
+ 
+  const contactForm = document.getElementById('contact__form');
+  const submitButton = document.getElementById('contact__submit');
+ 
+  const validateInput = (value, minLength = 1, maxLength = 1000) =>
+    typeof value === 'string' && value.trim().length >= minLength && value.trim().length <= maxLength;
+ 
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+ 
+  if (!submitButton) return;
+ 
+  submitButton.addEventListener('click', async (e) => {
+    e.preventDefault();
+ 
+    const name = document.getElementById('contact__name').value.trim();
+    const email = document.getElementById('contact__email').value.trim();
+    const subject = document.getElementById('contact__subject').value.trim();
+    const message = document.getElementById('contact__message').value.trim();
+ 
+    if (!validateInput(name, 1, 100)) return showNotification('Please enter a valid name', 'error');
+    if (!validateEmail(email)) return showNotification('Please enter a valid email address', 'error');
+    if (!validateInput(subject, 1, 200)) return showNotification('Please enter a valid subject', 'error');
+    if (!validateInput(message, 10, 5000)) return showNotification('Message must be between 10 and 5000 characters', 'error');
+ 
+    const templateParams = { name, email, title: subject, message };
+ 
+    try {
+      await emailjs.send('service_o4o68ha', 'contact_form', templateParams);
+      showNotification(`Thank you, ${name}! Your message has been sent.`, 'success');
+      contactForm.reset();
+    } catch (error) {
+      showNotification('Failed to send message. Please try again.', 'error');
+      console.error('Failed to send email:', error);
     }
+  });
 };
-
-// Helper function to show notifications
+ 
 const showNotification = (message, type) => {
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
-    document.body.appendChild(notification);
-
-    setTimeout(() => {
-        notification.remove();
-    }, 5000);
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  setTimeout(() => notification.remove(), 5000);
 };
+ 
 
-// Initialize contact form when DOM is ready
+
+const init = () => {
+  
+  console.log('Initializing theme...');
+  initTheme();
+  console.log('Initializing nav...');
+  initNav();
+  console.log('Initializing scroll spy...');
+  initScrollSpy();
+  console.log('Initializing scroll reveal...');
+  initScrollReveal();
+  console.log('Initializing project carousels...');
+  initProjectCarousels();
+  console.log('Initializing contact form...');
+  initContactForm();
+};
+ 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initContactForm);
+  document.addEventListener('DOMContentLoaded', init);
 } else {
-    initContactForm();
+  init();
 }
+ 
+
